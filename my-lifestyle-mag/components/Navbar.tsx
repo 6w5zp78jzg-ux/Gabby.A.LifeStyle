@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full p-6 md:px-12 flex justify-between items-end z-50 mix-blend-difference text-white border-b border-white/10 pb-4">
       {/* Lado Izquierdo: Datos Editoriales */}
       <div className="hidden md:flex flex-col gap-1 text-[10px] uppercase tracking-[0.2em] opacity-80">
-        <span>Barcelona / NY</span>
+        <span>Marbella / SF</span>
         <span>{today}</span>
       </div>
 
