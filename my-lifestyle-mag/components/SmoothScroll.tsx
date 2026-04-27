@@ -1,5 +1,5 @@
 "use client";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react"; // <-- Importación de la nueva arquitectura
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   return (
