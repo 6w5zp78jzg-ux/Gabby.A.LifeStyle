@@ -1,36 +1,34 @@
 import SmoothScroll from "@/components/SmoothScroll";
 import HeroMagazine from "@/components/HeroMagazine";
 import EditorialGrid from "@/components/EditorialGrid";
+import Navbar from "@/components/Navbar"; // Importamos el nuevo Header
 
 export default function Home() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen w-full">
-        {/* Barra de navegación minimalista */}
-        <nav className="fixed top-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference text-white">
-          <div className="font-sans text-xs tracking-[0.2em] uppercase font-bold">
-            Vanguard
-          </div>
-          <button className="font-sans text-xs tracking-widest uppercase hover:text-magAccent transition-colors">
-            Menu
-          </button>
-        </nav>
+      <main className="min-h-screen w-full bg-white text-black">
+        {/* Usamos el nuevo componente Navbar */}
+        <Navbar />
 
-        {/* Componentes de la Revista */}
+        {/* El Hero sigue igual */}
         <HeroMagazine />
+
+        {/* El Grid que ya conectamos a Sanity */}
         <EditorialGrid />
         
-        {/* Footer Editorial Minimalista */}
-        <footer className="w-full py-24 border-t border-gray-300 mt-20 flex flex-col items-center justify-center px-4 text-center">
+        <footer className="w-full py-24 border-t border-gray-200 mt-20 flex flex-col items-center justify-center px-4 text-center">
           <h3 className="font-serif text-4xl mb-6">Join the Circle</h3>
-          <p className="text-sm text-gray-500 max-w-md mb-8">
+          <p className="text-sm text-gray-500 max-w-md mb-8 italic">
             Subscribe to receive weekly essays on design, culture, and contemporary art.
           </p>
-          <input 
-            type="email" 
-            placeholder="Your email address" 
-            className="bg-transparent border-b border-magDark px-4 py-2 w-full max-w-xs focus:outline-none focus:border-magAccent transition-colors font-sans text-center"
-          />
+          <div className="flex w-full max-w-sm border-b border-black py-2">
+            <input 
+              type="email" 
+              placeholder="YOUR EMAIL" 
+              className="bg-transparent w-full focus:outline-none text-[10px] tracking-widest uppercase font-sans"
+            />
+            <button className="text-[10px] font-bold tracking-widest uppercase">Join</button>
+          </div>
         </footer>
       </main>
     </SmoothScroll>
