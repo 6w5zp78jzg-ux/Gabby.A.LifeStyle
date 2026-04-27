@@ -8,7 +8,8 @@ export default function EditorialGrid() {
   const [posts, setPosts] = useState<any[]>([]);
 
   useEffect(() => {
-    const query = `*[_type == "post"] | order(_createdAt desc) [0...2] {
+    // Hemos quitado el [0...2]. Ahora traemos todos los posts.
+    const query = `*[_type == "post"] | order(_createdAt desc) {
       title,
       excerpt,
       mainImage,
@@ -21,52 +22,46 @@ export default function EditorialGrid() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-24 md:py-32">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+    <section className="w-full max-w-7xl mx-auto px-4 py-24">
+      {/* Usamos un grid dinámico. 
+         Los posts se irán acomodando solos en dos columnas en escritorio.
+      */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
         
-        {/* Post 1: La Imagen Principal */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="col-span-1 md:col-span-7 flex flex-col gap-4"
-        >
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100">
-            {posts[0]?.mainImage && (
-              <Image 
-                src={urlFor(posts[0].mainImage).url()} 
-                alt={posts[0].title} 
-                fill 
-                className="object-cover hover:scale-105 transition-transform duration-[2s] ease-out"
-              />
-            )}
-          </div>
-          <h2 className="font-serif text-3xl md:text-4xl mt-4">{posts[0]?.title}</h2>
-          <p className="text-sm text-gray-600 uppercase tracking-widest">{posts[0]?.category}</p>
-        </motion.div>
-
-        {/* Post 2: La Cita y Segunda Imagen */}
-        {posts[1] && (
+        {posts.map((post, index) => (
           <motion.div 
+            key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="col-span-1 md:col-span-5 flex flex-col md:pt-48 gap-4"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index % 2 * 0.2 }}
+            // Este truco de 'md:mt-32' en los posts pares crea el efecto de revista desalineada (clase mundial)
+            className={`flex flex-col gap-4 ${index % 2 !== 0 ? "md:mt-32" : ""}`}
           >
-            <p className="text-lg md:text-xl leading-relaxed font-serif text-gray-800 mb-8 border-l-2 border-black pl-6">
-              &quot;{posts[1]?.excerpt}&quot;
-            </p>
-            <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
-              <Image 
-                src={urlFor(posts[1].mainImage).url()} 
-                alt={posts[1].title} 
-                fill 
-                className="object-cover hover:scale-105 transition-transform duration-[2s] ease-out"
-              />
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100">
+              {post.mainImage && (
+                <Image 
+                  src={urlFor(post.mainImage).url()} 
+                  alt={post.title} 
+                  fill 
+                  className="object-cover hover:scale-105 transition-transform duration-[2s] ease-out"
+                />
+              )}
             </div>
-            <h2 className="font-serif text-2xl mt-4">{posts[1]?.title}</h2>
-            <p className="text-sm text-gray-600 uppercase tracking-widest">{posts[1]?.category}</p>
+            
+            <div className="flex flex-col gap-2 mt-4">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-magAccent font-bold">
+                {post.category}
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl leading-tight">
+                {post.title}
+              </h2>
+              <p className="text-sm text-gray-500 leading-relaxed max-w-sm mt-2 italic">
+                &quot;{post.excerpt}&quot;
+              </p>
+            </div>
           </motion.div>
-        )}
+        ))}
 
       </div>
     </section>
