@@ -1,51 +1,56 @@
 "use client";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function HeroMagazine() {
-  const title = "The Art of Slow Living".split(" ");
-
+export default function EditorialGrid() {
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-20 px-4">
-      {/* Etiqueta superior */}
-      <motion.p 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="uppercase tracking-[0.3em] text-xs font-semibold mb-8 text-magAccent"
-      >
-        Volume IV — Spring
-      </motion.p>
+    <section className="w-full max-w-7xl mx-auto px-4 py-24 md:py-32">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+        
+        {/* Bloque 1: Imagen grande izquierda */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="col-span-1 md:col-span-7 flex flex-col gap-4"
+        >
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-200">
+            <Image 
+              src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=2000&auto=format&fit=crop" 
+              alt="Interior design" 
+              fill 
+              className="object-cover hover:scale-105 transition-transform duration-[2s] ease-out"
+            />
+          </div>
+          <h2 className="font-serif text-3xl md:text-4xl mt-4">Spaces That Breathe</h2>
+          <p className="text-sm text-gray-600 uppercase tracking-widest">Architecture</p>
+        </motion.div>
 
-      {/* Titular animado palabra por palabra con máscara */}
-      <h1 className="font-serif text-6xl md:text-8xl lg:text-[10vw] leading-none text-center flex flex-wrap justify-center gap-4 lg:gap-8 overflow-hidden">
-        {title.map((word, index) => (
-          <motion.span
-            key={index}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{
-              duration: 1,
-              ease: [0.76, 0, 0.24, 1],
-              delay: index * 0.1,
-            }}
-            className="inline-block"
-          >
-            {word}
-          </motion.span>
-        ))}
-      </h1>
+        {/* Bloque 2: Texto e imagen pequeña derecha */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="col-span-1 md:col-span-5 flex flex-col md:pt-48 gap-4"
+        >
+          <p className="text-lg md:text-xl leading-relaxed font-serif text-gray-800 mb-8 border-l-2 border-magAccent pl-6">
+            &quot;The absence of visual noise is not an aesthetic whim; it is a psychological necessity in the 21st century.&quot;
+          </p>
+          <div className="relative aspect-square w-full overflow-hidden bg-gray-200">
+            <Image 
+              src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop" 
+              alt="Ceramics" 
+              fill 
+              className="object-cover hover:scale-105 transition-transform duration-[2s] ease-out"
+            />
+          </div>
+          <h2 className="font-serif text-2xl mt-4">The New Ceramics</h2>
+          <p className="text-sm text-gray-600 uppercase tracking-widest">Craftsmanship</p>
+        </motion.div>
 
-      {/* Bajada / Subtítulo */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="mt-12 md:mt-24 max-w-md text-center"
-      >
-        <p className="text-sm md:text-base leading-relaxed text-gray-600">
-          Exploring the intersection of mindful design, brutalist architecture, and avant-garde gastronomy.
-        </p>
-      </motion.div>
+      </div>
     </section>
   );
 }
