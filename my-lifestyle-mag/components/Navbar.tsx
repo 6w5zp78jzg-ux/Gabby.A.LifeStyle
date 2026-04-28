@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Great_Vibes, Montserrat } from 'next/font/google';
 
-// Importamos las fuentes nativas de Google
+// Importamos las fuentes
 const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'] });
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -14,7 +14,6 @@ export default function Navbar() {
       
       {/* Lado Izquierdo: Logo Personalizado */}
       <Link href="/" className="flex flex-col items-center hover:opacity-80 transition-opacity">
-        {/* Aquí inyectamos la fuente manuscrita */}
         <span className={`${greatVibes.className} text-4xl md:text-5xl tracking-normal`}>
           ladywithdrmz
         </span>
@@ -23,17 +22,18 @@ export default function Navbar() {
         </span>
       </Link>
 
-      {/* Lado Derecho: Menú e Instagram */}
+      {/* Lado Derecho: Menú (Actualizado) e Instagram */}
       <div className="flex items-center gap-8 md:gap-10">
         
         <div className="flex flex-col items-center">
           <Link 
             href="/" 
-            className={`${montserrat.className} text-[10px] md:text-xs uppercase tracking-[0.2em] hover:opacity-70 transition-opacity`}
+            className={`${montserrat.className} text-[10px] md:text-xs uppercase tracking-[0.2em] hover:opacity-70 transition-opacity whitespace-nowrap`}
           >
-            Home
+            San Francisco-Marbella
           </Link>
-          <div className="w-[120%] h-[1px] bg-white mt-1 opacity-70"></div>
+          {/* Línea decorativa ajustada al nuevo ancho del texto */}
+          <div className="w-full h-[1px] bg-white mt-1 opacity-70"></div>
         </div>
 
         <Link 
