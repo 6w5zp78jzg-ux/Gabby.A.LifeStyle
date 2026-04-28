@@ -12,23 +12,20 @@ export default function Navbar() {
   return (
     <nav className="absolute top-0 left-0 right-0 w-full max-w-[100vw] p-4 md:p-6 md:px-12 flex justify-between items-center z-50 text-white overflow-x-hidden">
       
-      {/* Lado Izquierdo: LOGO (+15% de tamaño) */}
+      {/* Lado Izquierdo: LOGO (Tamaño aumentado +15%) */}
       <Link href="/" className="hover:opacity-80 transition-opacity shrink-0">
         <Image 
           src="/logo.png" 
           alt="Lady with Dreams Logo"
-          width={200} 
-          height={80}
-          // Ajustado: w-[126px] en móvil y w-[196px] en escritorio
-          className="w-[126px] md:w-[196px] h-auto object-contain mix-blend-screen"
+          width={250} 
+          height={100}
+          className="w-[145px] md:w-[225px] h-auto object-contain mix-blend-screen"
           priority
         />
       </Link>
 
-      {/* Lado Derecho: Menú y Redes Sociales */}
+      {/* Lado Derecho: Ubicación y Redes */}
       <div className="flex items-center gap-3 md:gap-10">
-        
-        {/* Ubicaciones */}
         <div className="flex flex-col items-center">
           <Link 
             href="/" 
@@ -39,15 +36,8 @@ export default function Navbar() {
           <div className="w-full h-[1px] bg-white mt-1 opacity-70"></div>
         </div>
 
-        {/* Grupo de Redes Sociales */}
         <div className="flex items-center gap-3 md:gap-4 shrink-0">
-          <Link 
-            href={instagramUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity hover:scale-110 duration-300"
-            aria-label="Visit Instagram"
-          >
+          <Link href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity hover:scale-110 duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -55,19 +45,12 @@ export default function Navbar() {
             </svg>
           </Link>
 
-          <Link 
-            href={tiktokUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity hover:scale-110 duration-300"
-            aria-label="Visit TikTok"
-          >
+          <Link href={tiktokUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity hover:scale-110 duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
             </svg>
           </Link>
         </div>
-
       </div>
     </nav>
   );
