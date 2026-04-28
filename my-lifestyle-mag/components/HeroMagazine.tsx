@@ -24,13 +24,14 @@ export default function HeroMagazine() {
           src="/hero-bg.jpg" 
           alt="Lady with Dreams Background" 
           fill 
-          className="object-cover"
+          className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0 bg-black/75 z-10"></div>
       </div>
 
-      <div className="relative z-20 flex flex-col items-center text-center px-4 w-full mt-12 md:mt-20">
+      {/* Contenedor Principal */}
+      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-12 md:mt-20">
         
         {/* WELCOME TO */}
         <motion.p 
@@ -49,11 +50,11 @@ export default function HeroMagazine() {
           transition={{ duration: 1.8, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative flex flex-col items-center w-full max-w-4xl"
         >
-          <h1 className={`${bodoni.className} text-[6rem] md:text-[11rem] leading-none tracking-widest uppercase font-normal`}>
+          <h1 className={`${bodoni.className} text-6xl md:text-[11rem] leading-none tracking-widest uppercase font-normal`}>
             Lady
           </h1>
-          <div className="absolute top-[45%] md:top-[50%] w-[120%] text-center z-30">
-            <span className={`${greatVibes.className} text-6xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
+          <div className="absolute top-[45%] md:top-[50%] w-full text-center z-30">
+            <span className={`${greatVibes.className} text-5xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
               with Dreams
             </span>
           </div>
@@ -64,7 +65,7 @@ export default function HeroMagazine() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.4 }}
-          className="mt-20 md:mt-32 flex items-center justify-center w-full max-w-sm gap-4"
+          className="mt-16 md:mt-32 flex items-center justify-center w-full max-w-[250px] md:max-w-sm gap-4"
         >
           <div className="h-[1px] w-full bg-white/30"></div>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-white/80 shrink-0">
@@ -104,7 +105,7 @@ export default function HeroMagazine() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 2.6 }}
-          className="mt-8 md:mt-12 relative flex flex-col items-center"
+          className="mt-8 md:mt-12 relative flex flex-col items-center pb-8"
         >
           <button 
             onClick={() => setShowSocials(!showSocials)}
