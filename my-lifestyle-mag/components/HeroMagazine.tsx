@@ -42,8 +42,8 @@ export default function HeroMagazine() {
       </div>
 
       {/* CONTENIDO (Texto y Botones) */}
-      {/* FIX LAPTOP: Hemos subido el mt a 24 en móvil y 44 en desktop para evitar el solapamiento */}
-      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-24 md:mt-44">
+      {/* AJUSTE: mt-16 en móvil y mt-32 en desktop para que acompañe la subida del Navbar */}
+      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-16 md:mt-32">
         
         {/* WELCOME TO */}
         <motion.p 
