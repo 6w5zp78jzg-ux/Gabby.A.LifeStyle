@@ -42,7 +42,8 @@ export default function HeroMagazine() {
       </div>
 
       {/* CONTENIDO (Texto y Botones) */}
-      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-12 md:mt-20">
+      {/* FIX LAPTOP: Hemos subido el mt a 24 en móvil y 44 en desktop para evitar el solapamiento */}
+      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-24 md:mt-44">
         
         {/* WELCOME TO */}
         <motion.p 
@@ -97,7 +98,7 @@ export default function HeroMagazine() {
           Lifestyle. Purpose. Elevated.
         </motion.p>
 
-        {/* BOTÓN: ENTER MY WORLD (Redirige a Instagram) */}
+        {/* BOTÓN: ENTER MY WORLD */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
