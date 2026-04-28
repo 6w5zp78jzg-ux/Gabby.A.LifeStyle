@@ -16,11 +16,12 @@ export default function HeroMagazine() {
   const tiktokUrl = "https://www.tiktok.com/@ladywithdrmz?_r=1&_t=ZN-95vMyewKgYo";
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
+    // FIX: Usamos min-h-[100dvh] para que la altura sea perfecta en móviles (ignora la barra de Safari)
+    <section className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
       
-      {/* CONTENEDOR DE IMÁGENES (Art Direction) */}
+      {/* CONTENEDOR DE IMÁGENES */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Foto para MÓVIL (9:16) - Se oculta en tablets/PC (md:hidden) */}
+        {/* Foto para MÓVIL (9:16) */}
         <div className="block md:hidden absolute inset-0 w-full h-full">
             <Image 
               src="/hero-bg-mobile.jpg" 
@@ -31,7 +32,7 @@ export default function HeroMagazine() {
             />
         </div>
 
-        {/* Foto para DESKTOP (Horizontal) - Se oculta en móviles (hidden md:block) */}
+        {/* Foto para DESKTOP (Horizontal) */}
         <div className="hidden md:block absolute inset-0 w-full h-full">
             <Image 
               src="/hero-bg.jpg" 
@@ -42,7 +43,6 @@ export default function HeroMagazine() {
             />
         </div>
 
-        {/* Capa de Oscuridad (Overlay) - Compartida para ambas */}
         <div className="absolute inset-0 bg-black/75 z-10"></div>
       </div>
 
@@ -59,18 +59,21 @@ export default function HeroMagazine() {
           Welcome To
         </motion.p>
 
-        {/* LADY WITH DREAMS */}
+        {/* LADY WITH DREAMS (Corregido el solapamiento) */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.8, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative flex flex-col items-center w-full max-w-4xl"
         >
-          <h1 className={`${bodoni.className} text-6xl md:text-[11rem] leading-none tracking-widest uppercase font-normal`}>
+          {/* FIX: LADY un poco más grande en móvil (text-7xl) */}
+          <h1 className={`${bodoni.className} text-7xl md:text-[11rem] leading-none tracking-widest uppercase font-normal z-20`}>
             Lady
           </h1>
-          <div className="absolute top-[45%] md:top-[50%] w-full text-center z-30">
-            <span className={`${greatVibes.className} text-5xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
+          {/* FIX: Quitamos 'absolute' y usamos margen negativo (-mt-6 en móvil, -mt-16 en PC) */}
+          <div className="z-30 -mt-6 md:-mt-16 text-center w-full">
+            {/* FIX: Tamaño de fuente ajustado a text-6xl */}
+            <span className={`${greatVibes.className} text-6xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
               with Dreams
             </span>
           </div>
@@ -81,7 +84,7 @@ export default function HeroMagazine() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.4 }}
-          className="mt-16 md:mt-32 flex items-center justify-center w-full max-w-[250px] md:max-w-sm gap-4"
+          className="mt-12 md:mt-24 flex items-center justify-center w-full max-w-[250px] md:max-w-sm gap-4"
         >
           <div className="h-[1px] w-full bg-white/30"></div>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-white/80 shrink-0">
