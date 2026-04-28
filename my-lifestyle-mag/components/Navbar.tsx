@@ -10,25 +10,28 @@ export default function Navbar() {
   const tiktokUrl = "https://www.tiktok.com/@ladywithdrmz?_r=1&_t=ZN-95vMyewKgYo";
 
   return (
-    /* FIX: Cambiamos 'p-4 md:p-6' por un control individual del padding superior (pt)
-       Esto eleva el logo y los iconos hacia arriba. 
+    /* CAMBIOS RADICALES:
+       1. top-[-5px] en móvil y top-[-15px] en desktop para "succionar" la barra hacia arriba.
+       2. pt-0: Eliminamos todo el espacio superior interno.
     */
-    <nav className="absolute top-0 left-0 right-0 w-full max-w-[100vw] px-4 pt-2 md:px-12 md:pt-4 flex justify-between items-center z-50 text-white overflow-x-hidden">
+    <nav className="absolute top-[-5px] md:top-[-15px] left-0 right-0 w-full max-w-[100vw] px-4 md:px-12 pt-0 flex justify-between items-center z-50 text-white overflow-x-hidden">
       
-      {/* Lado Izquierdo: LOGO (+15% de tamaño aplicado) */}
+      {/* Lado Izquierdo: LOGO */}
       <Link href="/" className="hover:opacity-80 transition-opacity shrink-0">
         <Image 
           src="/logo.png" 
           alt="Lady with Dreams Logo"
           width={250} 
           height={100}
-          className="w-[145px] md:w-[225px] h-auto object-contain mix-blend-screen"
+          /* mt-[-10px]: Si el logo tiene espacio transparente arriba, esto lo corrige */
+          className="w-[145px] md:w-[225px] h-auto object-contain mix-blend-screen mt-[-5px] md:mt-[-10px]"
           priority
         />
       </Link>
 
-      {/* Lado Derecho: Menú y Redes Sociales */}
-      <div className="flex items-center gap-3 md:gap-10">
+      {/* Lado Derecho: Ubicación y Redes */}
+      {/* Añadimos un pequeño mt para que los textos no se peguen tanto como el logo si no quieres */}
+      <div className="flex items-center gap-3 md:gap-10 mt-4 md:mt-8">
         <div className="flex flex-col items-center">
           <Link 
             href="/" 
