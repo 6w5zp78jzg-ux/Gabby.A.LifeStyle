@@ -16,7 +16,8 @@ export default function HeroMagazine() {
   const tiktokUrl = "https://www.tiktok.com/@ladywithdrmz?_r=1&_t=ZN-95vMyewKgYo";
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
+    /* FIX MÓVIL: Usamos min-h-[100dvh] en lugar de h-screen para que el navegador del móvil calcule el alto exacto sin cortar nada */
+    <section className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
       
       {/* Imagen de Fondo */}
       <div className="absolute inset-0 w-full h-full">
@@ -24,14 +25,15 @@ export default function HeroMagazine() {
           src="/hero-bg.jpg" 
           alt="Lady with Dreams Background" 
           fill 
-          className="object-cover object-center"
+          /* FIX MÓVIL: object-top ancla la imagen arriba en móviles para que no haga zoom hacia el centro perdiendo detalle */
+          className="object-cover object-top md:object-center"
           priority
         />
         <div className="absolute inset-0 bg-black/75 z-10"></div>
       </div>
 
       {/* Contenedor Principal */}
-      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-12 md:mt-20">
+      <div className="relative z-20 flex flex-col items-center text-center px-4 md:px-6 w-full mt-16 md:mt-20">
         
         {/* WELCOME TO */}
         <motion.p 
@@ -50,11 +52,16 @@ export default function HeroMagazine() {
           transition={{ duration: 1.8, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative flex flex-col items-center w-full max-w-4xl"
         >
-          <h1 className={`${bodoni.className} text-6xl md:text-[11rem] leading-none tracking-widest uppercase font-normal`}>
+          {/* Aumentamos LADY un poquito en móvil (text-7xl) */}
+          <h1 className={`${bodoni.className} text-7xl md:text-[11rem] leading-none tracking-widest uppercase font-normal`}>
             Lady
           </h1>
-          <div className="absolute top-[45%] md:top-[50%] w-full text-center z-30">
-            <span className={`${greatVibes.className} text-5xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
+          
+          {/* FIX MÓVIL CRÍTICO: 
+              Eliminado el 'absolute top-[45%]'. Ahora usamos un margen negativo (-mt-6 en móvil, -mt-16 en escritorio) 
+              para que el texto siempre se monte elegante por debajo, sin importar el tamaño de la pantalla. */}
+          <div className="z-30 w-full text-center -mt-6 md:-mt-16">
+            <span className={`${greatVibes.className} text-[3.5rem] md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
               with Dreams
             </span>
           </div>
@@ -65,7 +72,7 @@ export default function HeroMagazine() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.4 }}
-          className="mt-16 md:mt-32 flex items-center justify-center w-full max-w-[250px] md:max-w-sm gap-4"
+          className="mt-12 md:mt-32 flex items-center justify-center w-full max-w-[250px] md:max-w-sm gap-4"
         >
           <div className="h-[1px] w-full bg-white/30"></div>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-white/80 shrink-0">
@@ -90,7 +97,7 @@ export default function HeroMagazine() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 2.2, ease: "easeOut" }}
-          className="mt-10 md:mt-12"
+          className="mt-8 md:mt-12"
         >
           <Link 
             href="#fotos"
@@ -105,7 +112,7 @@ export default function HeroMagazine() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 2.6 }}
-          className="mt-8 md:mt-12 relative flex flex-col items-center pb-8"
+          className="mt-6 md:mt-12 relative flex flex-col items-center pb-8"
         >
           <button 
             onClick={() => setShowSocials(!showSocials)}
