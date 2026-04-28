@@ -22,7 +22,8 @@ export default function EditorialGrid() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-24">
+    // ¡Aquí está la magia! El id="fotos" es el ancla que busca el botón
+    <section id="fotos" className="w-full max-w-7xl mx-auto px-4 py-24">
       {/* Usamos un grid dinámico. 
          Los posts se irán acomodando solos en dos columnas en escritorio.
       */}
