@@ -16,7 +16,6 @@ export default function HeroMagazine() {
   const tiktokUrl = "https://www.tiktok.com/@ladywithdrmz?_r=1&_t=ZN-95vMyewKgYo";
 
   return (
-    // FIX: Usamos min-h-[100dvh] para que la altura sea perfecta en móviles (ignora la barra de Safari)
     <section className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
       
       {/* CONTENEDOR DE IMÁGENES */}
@@ -59,20 +58,19 @@ export default function HeroMagazine() {
           Welcome To
         </motion.p>
 
-        {/* LADY WITH DREAMS (Corregido el solapamiento) */}
+        {/* LADY WITH DREAMS (Ajuste de espaciado vertical) */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.8, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative flex flex-col items-center w-full max-w-4xl"
         >
-          {/* FIX: LADY un poco más grande en móvil (text-7xl) */}
           <h1 className={`${bodoni.className} text-7xl md:text-[11rem] leading-none tracking-widest uppercase font-normal z-20`}>
             Lady
           </h1>
-          {/* FIX: Quitamos 'absolute' y usamos margen negativo (-mt-6 en móvil, -mt-16 en PC) */}
-          <div className="z-30 -mt-6 md:-mt-16 text-center w-full">
-            {/* FIX: Tamaño de fuente ajustado a text-6xl */}
+          
+          {/* FIX: Hemos cambiado -mt-6 por mt-2 en móvil y -mt-16 por -mt-4 en PC */}
+          <div className="z-30 mt-2 md:-mt-4 text-center w-full">
             <span className={`${greatVibes.className} text-6xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
               with Dreams
             </span>
