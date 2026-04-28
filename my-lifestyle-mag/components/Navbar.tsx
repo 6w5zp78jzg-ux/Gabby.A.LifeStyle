@@ -10,7 +10,10 @@ export default function Navbar() {
   const tiktokUrl = "https://www.tiktok.com/@ladywithdrmz?_r=1&_t=ZN-95vMyewKgYo";
 
   return (
-    <nav className="absolute top-0 left-0 right-0 w-full max-w-[100vw] p-4 md:p-6 md:px-12 flex justify-between items-center z-50 text-white overflow-x-hidden">
+    /* FIX: Cambiamos 'p-4 md:p-6' por un control individual del padding superior (pt)
+       Esto eleva el logo y los iconos hacia arriba. 
+    */
+    <nav className="absolute top-0 left-0 right-0 w-full max-w-[100vw] px-4 pt-2 md:px-12 md:pt-4 flex justify-between items-center z-50 text-white overflow-x-hidden">
       
       {/* Lado Izquierdo: LOGO (+15% de tamaño aplicado) */}
       <Link href="/" className="hover:opacity-80 transition-opacity shrink-0">
