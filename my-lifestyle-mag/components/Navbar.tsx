@@ -12,17 +12,15 @@ export default function Navbar() {
   return (
     <nav className="absolute top-0 left-0 right-0 w-full max-w-[100vw] p-4 md:p-6 md:px-12 flex justify-between items-center z-50 text-white overflow-x-hidden">
       
-      {/* Lado Izquierdo: Logo en Imagen (Antes era texto) */}
+      {/* Lado Izquierdo: LOGO (+15% de tamaño) */}
       <Link href="/" className="hover:opacity-80 transition-opacity shrink-0">
         <Image 
           src="/logo.png" 
           alt="Lady with Dreams Logo"
-          width={180} 
-          height={70}
-          /* 'mix-blend-screen' hace que el fondo negro de la imagen desaparezca 
-             y solo se vea el logo blanco. ¡Magia de código! 
-          */
-          className="w-[110px] md:w-[170px] h-auto object-contain mix-blend-screen"
+          width={200} 
+          height={80}
+          // Ajustado: w-[126px] en móvil y w-[196px] en escritorio
+          className="w-[126px] md:w-[196px] h-auto object-contain mix-blend-screen"
           priority
         />
       </Link>
@@ -43,7 +41,6 @@ export default function Navbar() {
 
         {/* Grupo de Redes Sociales */}
         <div className="flex items-center gap-3 md:gap-4 shrink-0">
-          {/* Instagram */}
           <Link 
             href={instagramUrl} 
             target="_blank" 
@@ -58,7 +55,6 @@ export default function Navbar() {
             </svg>
           </Link>
 
-          {/* TikTok */}
           <Link 
             href={tiktokUrl} 
             target="_blank" 
