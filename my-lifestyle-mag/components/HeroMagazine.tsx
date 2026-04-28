@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Bodoni_Moda, Great_Vibes, Montserrat } from 'next/font/google';
@@ -10,10 +9,7 @@ const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'] });
 const montserrat = Montserrat({ subsets: ['latin'] });
 
 export default function HeroMagazine() {
-  const [showSocials, setShowSocials] = useState(false);
-
   const instagramUrl = "https://instagram.com/ladywithdrmz";
-  const tiktokUrl = "https://www.tiktok.com/@ladywithdrmz?_r=1&_t=ZN-95vMyewKgYo";
 
   return (
     <section className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-black text-white">
@@ -58,7 +54,7 @@ export default function HeroMagazine() {
           Welcome To
         </motion.p>
 
-        {/* LADY WITH DREAMS (Ajuste de espaciado vertical) */}
+        {/* LADY WITH DREAMS */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -69,7 +65,6 @@ export default function HeroMagazine() {
             Lady
           </h1>
           
-          {/* FIX: Hemos cambiado -mt-6 por mt-2 en móvil y -mt-16 por -mt-4 en PC */}
           <div className="z-30 mt-2 md:-mt-4 text-center w-full">
             <span className={`${greatVibes.className} text-6xl md:text-[9rem] tracking-normal normal-case drop-shadow-2xl`}>
               with Dreams
@@ -102,7 +97,7 @@ export default function HeroMagazine() {
           Lifestyle. Purpose. Elevated.
         </motion.p>
 
-        {/* BOTÓN: ENTER MY WORLD */}
+        {/* BOTÓN: ENTER MY WORLD (Redirige a Instagram) */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,56 +105,13 @@ export default function HeroMagazine() {
           className="mt-10 md:mt-12"
         >
           <Link 
-            href="#fotos"
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`${montserrat.className} border border-white/50 hover:bg-white hover:text-black transition-all duration-500 px-8 py-3 md:px-12 md:py-4 text-[9px] md:text-[10px] tracking-[0.2em] uppercase backdrop-blur-sm`}
           >
             Enter My World
           </Link>
-        </motion.div>
-
-        {/* DESPLEGABLE: VISIT MY SOCIAL MEDIA */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 2.6 }}
-          className="mt-8 md:mt-12 relative flex flex-col items-center pb-8"
-        >
-          <button 
-            onClick={() => setShowSocials(!showSocials)}
-            className={`${montserrat.className} flex items-center gap-3 hover:opacity-70 transition-opacity uppercase tracking-[0.2em] text-[8px] md:text-[9px]`}
-          >
-            Visit My Social Media
-            <motion.span animate={{ rotate: showSocials ? 180 : 0 }} transition={{ duration: 0.3 }}>
-                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor">
-                    <path d="M1 1L5 5L9 1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-            </motion.span>
-          </button>
-
-          <AnimatePresence>
-            {showSocials && (
-              <motion.div 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 10 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="flex gap-6 mt-4"
-              >
-                <Link href={instagramUrl} target="_blank" className="hover:scale-110 transition-transform">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </Link>
-                <Link href={tiktokUrl} target="_blank" className="hover:scale-110 transition-transform">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-                  </svg>
-                </Link>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.div>
 
       </div>
